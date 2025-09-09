@@ -132,11 +132,6 @@ def create_book(book: schemas.BookCreate, session: Session = Depends(get_session
   session.refresh(db_book)
   return db_book
 
-
-# УБИРАЕМ ЭТОТ ENDPOINT - он больше не нужен
-# @app.post("/book/with-owner", response_model=schemas.BookRead, tags=["Книги"])
-# def create_book_with_owner(book: schemas.BookCreateWithOwner, session: Session = Depends(get_session)):
-
 @app.put("/book/{book_id}/assign", response_model=schemas.BookRead, tags=["Книги"])
 def assign_book_to_owner(book_id: int, owner_id: int, session: Session = Depends(get_session)):
   book = session.get(models.Book, book_id)
@@ -178,8 +173,7 @@ def get_books_by_owner(profile_id: int, session: Session = Depends(get_session))
   ).all()
   return books
 
-
-# ===== MANY-TO-MANY ENDPOINTS =====
+# Обмен
 
 @app.post("/exchange-request", response_model=schemas.ExchangeRequestRead, tags=["Заявки"])
 def create_exchange_request(
