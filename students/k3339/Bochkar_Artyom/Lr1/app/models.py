@@ -3,7 +3,6 @@ from typing import Optional, List
 from datetime import datetime
 from enum import Enum
 
-
 # Enum для поля пола
 class Gender(str, Enum):
   MALE = "male"
@@ -32,6 +31,7 @@ class BookBase(SQLModel):
   author: str
   genre: Optional[str] = None
   description: Optional[str] = None
+  pages: int | None
 
 
 class ExchangeRequestBase(SQLModel):
@@ -73,3 +73,6 @@ class ExchangeRequest(ExchangeRequestBase, table=True):
   book_owner: Profile = Relationship(
     sa_relationship_kwargs={"primaryjoin": "Book.owner_id == Profile.id", "viewonly": True}
   )
+
+  from sqlmodel import SQLModel
+  Base = SQLModel.metadata
