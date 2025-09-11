@@ -1,6 +1,9 @@
 from sqlmodel import SQLModel, Session, create_engine
+import os
+from dotenv import load_dotenv
 
-db_url = 'postgresql://postgres:superuser@localhost:5432/book_exchange_db'
+load_dotenv()
+db_url = os.getenv('DB_ADMIN')
 
 engine = create_engine(db_url, echo=True)
 
