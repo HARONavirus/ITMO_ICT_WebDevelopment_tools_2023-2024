@@ -31,7 +31,7 @@ class BookBase(SQLModel):
   author: str
   genre: Optional[str] = None
   description: Optional[str] = None
-  pages: int | None
+  pages: Optional[int] = None
 
 
 class ExchangeRequestBase(SQLModel):
@@ -43,10 +43,8 @@ class Profile(ProfileBase, table=True):
   id: Optional[int] = Field(default=None, primary_key=True)
   created_at: datetime = Field(default_factory=datetime.utcnow)
 
-  # Связи
   books: List["Book"] = Relationship(back_populates="owner")
   sent_requests: List["ExchangeRequest"] = Relationship(back_populates="requester")
-  received_requests: List["ExchangeRequest"] = Relationship(back_populates="book_owner")
 
 
 class Book(BookBase, table=True):
@@ -54,7 +52,6 @@ class Book(BookBase, table=True):
   owner_id: Optional[int] = Field(default=None, foreign_key="profile.id")
   created_at: datetime = Field(default_factory=datetime.utcnow)
 
-  # Связи
   owner: Optional[Profile] = Relationship(back_populates="books")
   requests: List["ExchangeRequest"] = Relationship(back_populates="book")
 
@@ -65,14 +62,5 @@ class ExchangeRequest(ExchangeRequestBase, table=True):
   requester_id: int = Field(foreign_key="profile.id")
   created_at: datetime = Field(default_factory=datetime.utcnow)
 
-  # Связи Many-to-Many
-  book: Book = Relationship(back_populates="requests")
-  requester: Profile = Relationship(back_populates="sent_requests")
-
-  # Дополнительная связь для удобства
-  book_owner: Profile = Relationship(
-    sa_relationship_kwargs={"primaryjoin": "Book.owner_id == Profile.id", "viewonly": True}
-  )
-
-  from sqlmodel import SQLModel
-  Base = SQLModel.metadata
+  book: "Book" = Relationship(back_populates="requests")
+  requester: "Profile" = Relationship(back_populates="sent_requests")

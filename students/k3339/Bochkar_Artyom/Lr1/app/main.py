@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException, Depends
-from sqlmodel import Session, select
 from typing import List
 from app import models, schemas
 from app.conection import get_session, init_db
+from sqlmodel import Session, select
 
 app = FastAPI(
   title="Book Exchange API",
@@ -47,6 +47,26 @@ def get_profile(profile_id: int, session: Session = Depends(get_session)):
     raise HTTPException(status_code=404, detail="Профиль не найден")
   return profile
 
+@app.get("/profile/{profile_id}/books", response_model=List[schemas.BookRead], tags=["Профили"])
+def get_books_by_owner(profile_id: int, session: Session = Depends(get_session)):
+  owner = session.get(models.Profile, profile_id)
+  if not owner:
+    raise HTTPException(status_code=404, detail="Владелец не найден")
+
+  books = session.exec(
+    select(models.Book).where(models.Book.owner_id == profile_id)
+  ).all()
+  return books
+
+
+@app.get("/profile/{profile_id}/with-books", response_model=schemas.ProfileWithBooks, tags=["Профили"])
+def get_profile_with_books(profile_id: int, session: Session = Depends(get_session)):
+  profile = session.get(models.Profile, profile_id)
+  if not profile:
+    raise HTTPException(status_code=404, detail="Профиль не найден")
+
+  return profile
+
 
 @app.post("/profile", response_model=schemas.ProfileRead, tags=["Профили"])
 def create_profile(profile: schemas.ProfileCreate, session: Session = Depends(get_session)):
@@ -56,33 +76,40 @@ def create_profile(profile: schemas.ProfileCreate, session: Session = Depends(ge
   if existing:
     raise HTTPException(status_code=400, detail="Имя пользователя уже занято")
 
-  db_profile = models.Profile(**profile.dict())
+  db_profile = models.Profile.model_validate(profile)
   session.add(db_profile)
   session.commit()
   session.refresh(db_profile)
   return db_profile
 
 
-@app.put("/profile/{profile_id}", response_model=schemas.ProfileRead, tags=["Профили"])
-def update_profile(profile_id: int, profile: schemas.ProfileCreate, session: Session = Depends(get_session)):
-  db_profile = session.get(models.Profile, profile_id)
-  if not db_profile:
-    raise HTTPException(status_code=404, detail="Профиль не найден")
+@app.patch("/profile/{profile_id}", response_model=schemas.ProfileRead, tags=["Профили"])
+def update_profile(
+    profile_id: int,
+    profile_update: schemas.ProfileUpdate,  # Используем схему для обновления
+    session: Session = Depends(get_session)
+):
+    db_profile = session.get(models.Profile, profile_id)
+    if not db_profile:
+        raise HTTPException(status_code=404, detail="Профиль не найден")
 
-  if db_profile.username != profile.username:
-    existing = session.exec(
-      select(models.Profile).where(models.Profile.username == profile.username)
-    ).first()
-    if existing:
-      raise HTTPException(status_code=400, detail="Имя пользователя уже занято")
+    # Проверяем уникальность username только если он меняется
+    if profile_update.username and db_profile.username != profile_update.username:
+        existing = session.exec(
+            select(models.Profile).where(models.Profile.username == profile_update.username)
+        ).first()
+        if existing:
+            raise HTTPException(status_code=400, detail="Имя пользователя уже занято")
 
-  for key, value in profile.dict().items():
-    setattr(db_profile, key, value)
+    # Обновляем только переданные поля
+    update_data = profile_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(db_profile, key, value)
 
-  session.add(db_profile)
-  session.commit()
-  session.refresh(db_profile)
-  return db_profile
+    session.add(db_profile)
+    session.commit()
+    session.refresh(db_profile)
+    return db_profile
 
 
 @app.delete("/profile/{profile_id}", tags=["Профили"])
@@ -126,11 +153,37 @@ def create_book(book: schemas.BookCreate, session: Session = Depends(get_session
     if not owner:
       raise HTTPException(status_code=404, detail="Владелец не найден")
 
-  db_book = models.Book(**book.dict())
+  db_book = models.Book.model_validate(book)
   session.add(db_book)
   session.commit()
   session.refresh(db_book)
   return db_book
+
+@app.patch("/book/{book_id}", response_model=schemas.BookRead, tags=["Книги"])
+def update_book(
+    book_id: int,
+    book_update: schemas.BookUpdate,
+    session: Session = Depends(get_session)
+):
+    db_book = session.get(models.Book, book_id)
+    if not db_book:
+        raise HTTPException(status_code=404, detail="Книга не найдена")
+
+    # Проверяем владельца только если он меняется
+    if book_update.owner_id is not None and book_update.owner_id != db_book.owner_id:
+        owner = session.get(models.Profile, book_update.owner_id)
+        if not owner:
+            raise HTTPException(status_code=404, detail="Владелец не найден")
+
+    # Обновляем только переданные поля
+    update_data = book_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(db_book, key, value)
+
+    session.add(db_book)
+    session.commit()
+    session.refresh(db_book)
+    return db_book
 
 @app.put("/book/{book_id}/assign", response_model=schemas.BookRead, tags=["Книги"])
 def assign_book_to_owner(book_id: int, owner_id: int, session: Session = Depends(get_session)):
@@ -162,16 +215,28 @@ def release_book_from_owner(book_id: int, session: Session = Depends(get_session
   return book
 
 
-@app.get("/profile/{profile_id}/books", response_model=List[schemas.BookRead], tags=["Книги"])
-def get_books_by_owner(profile_id: int, session: Session = Depends(get_session)):
-  owner = session.get(models.Profile, profile_id)
-  if not owner:
-    raise HTTPException(status_code=404, detail="Владелец не найден")
+@app.delete("/book/{book_id}", tags=["Книги"])
+def delete_book(book_id: int, session: Session = Depends(get_session)):
+  book = session.get(models.Book, book_id)
+  if not book:
+    raise HTTPException(status_code=404, detail="Книга не найдена")
 
-  books = session.exec(
-    select(models.Book).where(models.Book.owner_id == profile_id)
+  active_requests = session.exec(
+    select(models.ExchangeRequest).where(
+      models.ExchangeRequest.book_id == book_id,
+      models.ExchangeRequest.status == models.RequestStatus.PENDING
+    )
   ).all()
-  return books
+
+  if active_requests:
+    raise HTTPException(
+      status_code=400,
+      detail="Нельзя удалить книгу с активными заявками на обмен"
+    )
+
+  session.delete(book)
+  session.commit()
+  return {"message": "Книга удалена успешно"}
 
 # Обмен
 

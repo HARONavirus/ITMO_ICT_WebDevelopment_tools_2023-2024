@@ -23,12 +23,28 @@ class ProfileCreate(SQLModel):
     gender: Gender
     address: Optional[str] = None
 
+class ProfileUpdate(SQLModel):
+  username: Optional[str] = None
+  name: Optional[str] = None
+  surname: Optional[str] = None
+  age: Optional[int] = None
+  gender: Optional[Gender] = None
+  address: Optional[str] = None
+
 class BookCreate(SQLModel):
     title: str
     author: str
     genre: Optional[str] = None
     description: Optional[str] = None
     owner_id: Optional[int] = None
+
+class BookUpdate(SQLModel):
+  title: Optional[str] = None
+  author: Optional[str] = None
+  genre: Optional[str] = None
+  description: Optional[str] = None
+  pages: Optional[int] = None
+  owner_id: Optional[int] = None
 
 # Убираем BookCreateWithOwner, используем обычный BookCreate
 class ExchangeRequestCreate(SQLModel):
