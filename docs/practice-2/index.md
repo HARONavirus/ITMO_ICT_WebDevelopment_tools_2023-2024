@@ -190,7 +190,7 @@ class BookUpdate(SQLModel):
 @app.patch("/profile/{profile_id}", response_model=schemas.ProfileRead, tags=["Профили"])
 def update_profile(
     profile_id: int,
-    profile_update: schemas.ProfileUpdate,  # Используем схему для обновления
+    profile_update: schemas.ProfileUpdate,
     session: Session = Depends(get_session)
 ):
     db_profile = session.get(models.Profile, profile_id)
