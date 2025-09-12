@@ -1,0 +1,1180 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://HARONavirus.github.io/ITMO_ICT_WebDevelopment_tools_2024-2025/lab-2/task2/">
+      
+      
+        <link rel="prev" href="../task1/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>Task 2 - Artboch's Docs - Second semester</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Artboch&#39;s Docs - Second semester" class="md-header__button md-logo" aria-label="Artboch's Docs - Second semester" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Artboch's Docs - Second semester
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Artboch&#39;s Docs - Second semester" class="md-nav__button md-logo" aria-label="Artboch's Docs - Second semester" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Artboch's Docs - Second semester
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Lab 1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practice 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practice 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practice 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Lab 2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Lab 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Task 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Task 2
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Task 2
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задача 2: Параллельный парсинг веб-страниц с сохранением в базу данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Задача 2: Параллельный парсинг веб-страниц с сохранением в базу данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общий код
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      threading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="threading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Выполнение кода:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Проверка базы данных:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      multiprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="multiprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Выполнение кода:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Проверка базы данных:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async" class="md-nav__link">
+    <span class="md-ellipsis">
+      async
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="async">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Выполнение кода:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Проверка базы данных:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Задача 2: Параллельный парсинг веб-страниц с сохранением в базу данных
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Задача 2: Параллельный парсинг веб-страниц с сохранением в базу данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Общий код
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      threading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="threading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Выполнение кода:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Проверка базы данных:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      multiprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="multiprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Выполнение кода:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Проверка базы данных:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async" class="md-nav__link">
+    <span class="md-ellipsis">
+      async
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="async">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Выполнение кода:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Проверка базы данных:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2">Лабораторная работа 2. Потоки. Процессы. Асинхронность.</h1>
+<h2 id="2-">Задача 2: Параллельный парсинг веб-страниц с сохранением в базу данных</h2>
+<p><strong>Задача</strong>: Напишите программу на Python для параллельного парсинга нескольких веб-страниц с сохранением данных в базу данных с использованием подходов threading, multiprocessing и async. Каждая программа должна парсить информацию с нескольких веб-сайтов, сохранять их в базу данных.</p>
+<h3 id="_1">Общий код</h3>
+<pre><code>import requests
+from bs4 import BeautifulSoup
+from sqlmodel import Session, create_engine, delete
+import time
+from models import *
+from typing import List
+
+
+DATABASE_URL = &quot;postgresql://postgres:superuser@localhost:5432/book_exchange_db&quot;
+engine = create_engine(DATABASE_URL)
+SQLModel.metadata.create_all(engine)
+
+URLS = [
+    &quot;https://www.livelib.ru/author/103808/top-artur-konan-dojl&quot;,
+    &quot;https://www.livelib.ru/author/1781/top-agata-kristi&quot;,
+    &quot;https://www.livelib.ru/author/4389/top-sharlotta-bronte&quot;
+]
+
+
+def clear_database():
+  &quot;&quot;&quot;Очистка базы данных перед началом работы&quot;&quot;&quot;
+  with Session(engine) as session:
+    # Сначала удаляем все книги (из-за внешних ключей)
+    session.exec(delete(Book))
+    # Затем удаляем все профили
+    session.exec(delete(Profile))
+    session.commit()
+  print(&quot;База данных очищена&quot;)
+
+
+def create_default_profile():
+  &quot;&quot;&quot;Создание профиля по умолчанию с id=1&quot;&quot;&quot;
+  with Session(engine) as session:
+    # Создаем профиль с явным id=1
+    default_profile = Profile(
+      id=1,  # Явно указываем id
+      username=&quot;default_user&quot;,
+      name=&quot;Default&quot;,
+      surname=&quot;User&quot;,
+      age=30,
+      gender=Gender.MALE,
+      address=&quot;Default address&quot;
+    )
+    session.add(default_profile)
+    session.commit()
+    print(&quot;Создан профиль по умолчанию с id=1&quot;)
+
+
+def parse_books(url: str) -&gt; List[BookBase]:
+  &quot;&quot;&quot;Парсинг книг со страницы автора&quot;&quot;&quot;
+  try:
+    response = requests.get(url)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, 'html.parser')
+    author = soup.find('div', class_='author-header__name').text.strip()
+
+    books = []
+    for book_item in soup.find_all('div', class_='book-item__inner'):
+      title = book_item.find('a', class_='book-item__title')
+      if title:
+        title = title.text.strip()
+      else:
+        continue
+
+      description = book_item.find('p')
+      description = &quot;.&quot;.join(description.text.strip().split(&quot;.&quot;)[:3]) + &quot;.&quot; if description else None
+
+      books.append(BookBase(
+        title=title,
+        author=author,
+        description=description,
+      ))
+
+    return books
+  except Exception as e:
+    print(f&quot;Ошибка при парсинге {url}: {e}&quot;)
+    return []
+
+
+def save_books(books: List[BookBase]):
+  &quot;&quot;&quot;Сохранение книг в БД&quot;&quot;&quot;
+  try:
+    with Session(engine) as session:
+      for book_data in books:
+        book = Book(**book_data.model_dump(), owner_id=1)
+        session.add(book)
+      session.commit()
+  except Exception as e:
+    print(f&quot;Ошибка при сохранении книг: {e}&quot;)
+</code></pre>
+<h3 id="threading">threading</h3>
+<h4 id="_2">Код:</h4>
+<pre><code>import threading
+
+# Сюда вставляем общий код
+
+def parse_and_save(url: str):
+    &quot;&quot;&quot;Функция для потока: парсинг и сохранение&quot;&quot;&quot;
+    print(f&quot;Парсинг {url}&quot;)
+    books = parse_books(url)
+    save_books(books)
+    print(f&quot;Сохранено {len(books)} книг с {url}&quot;)
+
+
+def main():
+    start_time = time.time()
+
+    clear_database()
+
+    create_default_profile()
+
+    threads = []
+    for url in URLS:
+        thread = threading.Thread(target=parse_and_save, args=(url,))
+        threads.append(thread)
+        thread.start()
+
+    for thread in threads:
+        thread.join()
+
+    end_time = time.time()
+    print(f&quot;Общее время выполнения: {end_time - start_time:.2f} секунд&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<h4 id="_3">Выполнение кода:</h4>
+<p><img alt="результат выполнения threading" src="https://i.ibb.co/fzyDQ6ph/2025-09-12-13-02-53.png" /></p>
+<p><strong>Общее время выполнения: 0.48 секунд</strong></p>
+<h4 id="_4">Проверка базы данных:</h4>
+<p>Артур Конан Дойль</p>
+<p><img alt="результат выполнения threading в бд" src="https://i.ibb.co/VWTQWcxW/2025-09-11-23-22-31.png" /></p>
+<p>Агата Кристи</p>
+<p><img alt="результат выполнения threading в бд" src="https://i.ibb.co/qMDyp2Y9/2025-09-11-23-24-12.png" /></p>
+<p>Шарлотта Бронте</p>
+<p><img alt="результат выполнения threading в бд" src="https://i.ibb.co/4nRtQFtb/2025-09-11-23-24-44.png" /></p>
+<h3 id="multiprocessing">multiprocessing</h3>
+<h4 id="_5">Код:</h4>
+<pre><code>import multiprocessing
+from multiprocessing import Pool
+
+# Сюда вставляем общий код
+
+def parse_and_save(url: str):
+  &quot;&quot;&quot;Функция для процесса: парсинг и сохранение&quot;&quot;&quot;
+  print(f&quot;Парсинг {url}&quot;)
+  books = parse_books(url)
+  if books:
+    save_books(books)
+    print(f&quot;Сохранено {len(books)} книг с {url}&quot;)
+  else:
+    print(f&quot;Не удалось получить книги с {url}&quot;)
+
+
+def main():
+  start_time = time.time()
+
+  # Очищаем базу и создаем профиль в основном процессе
+  clear_database()
+  create_default_profile()
+
+  # Создаем пул процессов
+  with Pool(processes=len(URLS)) as pool:
+    # Запускаем процессы для каждого URL
+    pool.map(parse_and_save, URLS)
+
+  end_time = time.time()
+  print(f&quot;Общее время выполнения: {end_time - start_time:.2f} секунд&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+  # Для multiprocessing в Windows необходимо использовать эту конструкцию
+  multiprocessing.freeze_support()
+  main()
+</code></pre>
+<h4 id="_6">Выполнение кода:</h4>
+<p><img alt="результат выполнения multiprocessing" src="https://i.ibb.co/G4FzhHv7/2025-09-12-13-05-01.png" /></p>
+<p><strong>Общее время выполнения: 0.79 секунд</strong></p>
+<h4 id="_7">Проверка базы данных:</h4>
+<p>Артур Конан Дойль</p>
+<p><img alt="результат выполнения multiprocessing в бд" src="https://i.ibb.co/tw1C86JN/2025-09-12-13-07-30.png" /></p>
+<p>Агата Кристи</p>
+<p><img alt="результат выполнения multiprocessing в бд" src="https://i.ibb.co/vpKLk4T/2025-09-12-13-07-51.png" /></p>
+<p>Шарлотта Бронте</p>
+<p><img alt="результат выполнения multiprocessing в бд" src="https://i.ibb.co/YBkpqGry/2025-09-12-13-08-11.png" /></p>
+<h3 id="async">async</h3>
+<h4 id="_8">Код:</h4>
+<pre><code>import aiohttp
+import asyncio
+import ssl
+
+# Сюда вставляем общий код и удаляем повторы без async
+
+async def fetch(url):
+  &quot;&quot;&quot;Асинхронное получение HTML с отключенной проверкой SSL&quot;&quot;&quot;
+  ssl_context = ssl.create_default_context()
+  ssl_context.check_hostname = False
+  ssl_context.verify_mode = ssl.CERT_NONE
+
+  connector = aiohttp.TCPConnector(ssl=ssl_context)
+  async with aiohttp.ClientSession(connector=connector) as session:
+    async with session.get(url) as response:
+      return await response.text()
+
+
+async def parse_books(url: str) -&gt; List[BookBase]:
+  &quot;&quot;&quot;Асинхронный парсинг книг со страницы автора&quot;&quot;&quot;
+  try:
+    html = await fetch(url)
+    soup = BeautifulSoup(html, 'html.parser')
+    author = soup.find('div', class_='author-header__name').text.strip()
+
+    books = []
+    for book_item in soup.find_all('div', class_='book-item__inner'):
+      title = book_item.find('a', class_='book-item__title')
+      if title:
+        title = title.text.strip()
+      else:
+        continue
+
+      description = book_item.find('p')
+      description = &quot;.&quot;.join(description.text.strip().split(&quot;.&quot;)[:3]) + &quot;.&quot; if description else None
+
+      books.append(BookBase(
+        title=title,
+        author=author,
+        description=description,
+      ))
+
+    return books
+  except Exception as e:
+    print(f&quot;Ошибка при парсинге {url}: {e}&quot;)
+    return []
+
+
+async def save_books(books: List[BookBase]):
+  &quot;&quot;&quot;Асинхронное сохранение книг в БД&quot;&quot;&quot;
+  try:
+    # Используем asyncio.to_thread для выполнения синхронной операции БД
+    await asyncio.to_thread(_sync_save_books, books)
+  except Exception as e:
+    print(f&quot;Ошибка при сохранении книг: {e}&quot;)
+
+
+def _sync_save_books(books: List[BookBase]):
+  &quot;&quot;&quot;Синхронная функция для сохранения книг&quot;&quot;&quot;
+  with Session(engine) as session:
+    for book_data in books:
+      book = Book(**book_data.model_dump(), owner_id=1)
+      session.add(book)
+    session.commit()
+
+
+async def parse_and_save(url: str):
+  &quot;&quot;&quot;Асинхронная задача: парсинг и сохранение&quot;&quot;&quot;
+  print(f&quot;Парсинг {url}&quot;)
+  books = await parse_books(url)
+  if books:
+    await save_books(books)
+    print(f&quot;Сохранено {len(books)} книг с {url}&quot;)
+  else:
+    print(f&quot;Не удалось получить книги с {url}&quot;)
+
+
+async def main():
+  start_time = time.time()
+
+  # Очищаем базу и создаем профиль (синхронные операции)
+  clear_database()
+  create_default_profile()
+
+  # Создаем задачи для каждого URL
+  tasks = [parse_and_save(url) for url in URLS]
+  # Запускаем все задачи параллельно
+  await asyncio.gather(*tasks)
+
+  end_time = time.time()
+  print(f&quot;Общее время выполнения: {end_time - start_time:.2f} секунд&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+  asyncio.run(main())
+</code></pre>
+<h4 id="_9">Выполнение кода:</h4>
+<p><img alt="результат выполнения async" src="https://i.ibb.co/35sfj0Jc/2025-09-12-16-51-50.png" /></p>
+<p><strong>Общее время выполнения: 0.46 секунд</strong></p>
+<h4 id="_10">Проверка базы данных:</h4>
+<p>Артур Конан Дойль</p>
+<p><img alt="результат выполнения async в бд" src="https://i.ibb.co/21rjgzR0/2025-09-12-17-04-26.png" /></p>
+<p>Агата Кристи</p>
+<p><img alt="результат выполнения async в бд" src="https://i.ibb.co/fVPtD41v/2025-09-12-17-04-48.png" /></p>
+<p>Шарлотта Бронте</p>
+<p><img alt="результат выполнения async в бд" src="https://i.ibb.co/pBNkvZf6/2025-09-12-17-05-09.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Time for 1M (sec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>threading</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>multiprocessing</td>
+<td>0.79</td>
+</tr>
+<tr>
+<td>async</td>
+<td>0.46</td>
+</tr>
+</tbody>
+</table>
+<p>Multiprocessing показал наихудший результат из-за требования отдельного подключения к БД для каждого процесса и накладных расходов на их создание.</p>
+<p>Threading и Async показали схожие результаты, но для задачи парсинга и сохранения данных всё же лучше подходит второй процесс, потому что: - Нет необходимости в настоящем параллелизме для такого малого количества URL, - Минимальные накладные расходы.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
