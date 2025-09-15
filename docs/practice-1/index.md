@@ -93,13 +93,6 @@ def create_profile(profile: Profile) -> TypedDict('Response', {"status": int, "d
   profile_data = profile.model_dump()
   profile_data["id"] = max_id + 1
 
-  for book in profile_data["books"]:
-    book["owner_id"] = profile_data["id"]
-    if book.get("id") is None:
-      all_books = [b for prof in test_db for b in prof["books"]]
-      max_book_id = max(b["id"] for b in all_books) if all_books else 0
-      book["id"] = max_book_id + 1
-
   test_db.append(profile_data)
   return {"status": 200, "data": profile_data}
 ```
