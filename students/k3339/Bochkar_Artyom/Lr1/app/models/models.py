@@ -3,6 +3,7 @@ from typing import Optional, List
 from datetime import datetime
 from enum import Enum
 
+
 # Enum для поля пола
 class Gender(str, Enum):
   MALE = "male"
@@ -15,6 +16,15 @@ class RequestStatus(str, Enum):
   ACCEPTED = "accepted"
   REJECTED = "rejected"
 
+class User(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    username: str = Field(unique=True, index=True)
+    email: str = Field(unique=True, index=True)
+    hashed_password: str
+    salt: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    is_active: bool = Field(default=True)
+  
 
 # Базовые модели для валидации данных
 class ProfileBase(SQLModel):
@@ -40,11 +50,14 @@ class ExchangeRequestBase(SQLModel):
 
 # Модели для базы данных
 class Profile(ProfileBase, table=True):
-  id: Optional[int] = Field(default=None, primary_key=True)
-  created_at: datetime = Field(default_factory=datetime.utcnow)
-
-  books: List["Book"] = Relationship(back_populates="owner")
-  sent_requests: List["ExchangeRequest"] = Relationship(back_populates="requester")
+    id: Optional[int] = Field(default=None, primary_key=True)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    
+    user_id: Optional[int] = Field(default=None, foreign_key="user.id", unique=True)
+    user: Optional[User] = Relationship()
+    
+    books: List["Book"] = Relationship(back_populates="owner")
+    sent_requests: List["ExchangeRequest"] = Relationship(back_populates="requester")
 
 
 class Book(BookBase, table=True):
