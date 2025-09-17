@@ -1,3 +1,7 @@
+# cd /Users/artboch/Documents/self-projects/ITMO_ICT_WebDevelopment_tools_2023-2024/students/k3339/Bochkar_Artyom/Lr2
+# source .venv/bin/activate
+# python "Task 2/parse_multiprocessing.py"
+
 import requests
 from bs4 import BeautifulSoup
 from sqlmodel import Session, create_engine, delete
@@ -22,9 +26,7 @@ URLS = [
 def clear_database():
   """Очистка базы данных перед началом работы"""
   with Session(engine) as session:
-    # Сначала удаляем все книги (из-за внешних ключей)
     session.exec(delete(Book))
-    # Затем удаляем все профили
     session.exec(delete(Profile))
     session.commit()
   print("База данных очищена")
@@ -33,9 +35,8 @@ def clear_database():
 def create_default_profile():
   """Создание профиля по умолчанию с id=1"""
   with Session(engine) as session:
-    # Создаем профиль с явным id=1
     default_profile = Profile(
-      id=1,  # Явно указываем id
+      id=1,
       username="default_user",
       name="Default",
       surname="User",
@@ -105,13 +106,10 @@ def parse_and_save(url: str):
 def main():
   start_time = time.time()
 
-  # Очищаем базу и создаем профиль в основном процессе
   clear_database()
   create_default_profile()
 
-  # Создаем пул процессов
   with Pool(processes=len(URLS)) as pool:
-    # Запускаем процессы для каждого URL
     pool.map(parse_and_save, URLS)
 
   end_time = time.time()
@@ -119,6 +117,5 @@ def main():
 
 
 if __name__ == "__main__":
-  # Для multiprocessing в Windows необходимо использовать эту конструкцию
   multiprocessing.freeze_support()
   main()

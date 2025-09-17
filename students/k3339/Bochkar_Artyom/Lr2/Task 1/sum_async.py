@@ -5,8 +5,6 @@ import time
 async def calculate_sum_async(start, end):
   """Асинхронно вычисляет сумму арифметической прогрессии"""
   n = end - start + 1
-  # Имитируем асинхронную операцию (хотя вычисления синхронные)
-  await asyncio.sleep(0.000001)  # Минимальная пауза для демонстрации
   return n * (start + end) // 2
 
 
@@ -17,14 +15,12 @@ async def async_sum(N, num_tasks=4):
 
   start_time = time.time()
 
-  # Создаем задачи
   for i in range(num_tasks):
     start = i * chunk_size + 1
     end = (i + 1) * chunk_size if i != num_tasks - 1 else N
     task = asyncio.create_task(calculate_sum_async(start, end))
     tasks.append(task)
 
-  # Запускаем все задачи параллельно
   results = await asyncio.gather(*tasks)
   total = sum(results)
 

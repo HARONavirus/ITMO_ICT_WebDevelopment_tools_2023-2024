@@ -1,3 +1,7 @@
+# cd /Users/artboch/Documents/self-projects/ITMO_ICT_WebDevelopment_tools_2023-2024/students/k3339/Bochkar_Artyom/Lr2
+# source .venv/bin/activate
+# python "Task 2/parse_async.py"
+
 from bs4 import BeautifulSoup
 from sqlmodel import Session, create_engine, delete
 import time
@@ -22,9 +26,7 @@ URLS = [
 def clear_database():
   """Очистка базы данных перед началом работы"""
   with Session(engine) as session:
-    # Сначала удаляем все книги (из-за внешних ключей)
     session.exec(delete(Book))
-    # Затем удаляем все профили
     session.exec(delete(Profile))
     session.commit()
   print("База данных очищена")
@@ -33,9 +35,8 @@ def clear_database():
 def create_default_profile():
   """Создание профиля по умолчанию с id=1"""
   with Session(engine) as session:
-    # Создаем профиль с явным id=1
     default_profile = Profile(
-      id=1,  # Явно указываем id
+      id=1,
       username="default_user",
       name="Default",
       surname="User",
@@ -93,7 +94,6 @@ async def parse_books(url: str) -> List[BookBase]:
 async def save_books(books: List[BookBase]):
   """Асинхронное сохранение книг в БД"""
   try:
-    # Используем asyncio.to_thread для выполнения синхронной операции БД
     await asyncio.to_thread(_sync_save_books, books)
   except Exception as e:
     print(f"Ошибка при сохранении книг: {e}")
@@ -122,13 +122,10 @@ async def parse_and_save(url: str):
 async def main():
   start_time = time.time()
 
-  # Очищаем базу и создаем профиль (синхронные операции)
   clear_database()
   create_default_profile()
 
-  # Создаем задачи для каждого URL
   tasks = [parse_and_save(url) for url in URLS]
-  # Запускаем все задачи параллельно
   await asyncio.gather(*tasks)
 
   end_time = time.time()
